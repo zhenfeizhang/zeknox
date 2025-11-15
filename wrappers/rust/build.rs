@@ -19,7 +19,10 @@ fn build_device_wrapper() {
         .to_string_lossy()
         .to_string();
     let binding_path = PathBuf::from("src/device").join("bindings.rs");
-    println!("cargo:rustc-link-search=native={}", "/usr/lib/x86_64-linux-gnu");
+    println!(
+        "cargo:rustc-link-search=native={}",
+        "/usr/lib/x86_64-linux-gnu"
+    );
     println!("cargo:rustc-link-lib=cudart");
     println!("cargo:rerun-if-changed={}", cuda_runtime_api_path);
     println!(
@@ -107,7 +110,10 @@ fn build_lib() {
     println!("cargo:rustc-link-search={}", libdir.to_str().unwrap());
 
     // Static lib
-    println!("cargo:rustc-link-search=native={}", "/usr/lib/x86_64-linux-gnu");
+    println!(
+        "cargo:rustc-link-search=native={}",
+        "/usr/lib/x86_64-linux-gnu"
+    );
     println!("cargo:rustc-link-lib=cudart");
     println!("cargo:rustc-link-lib=stdc++");
     println!("cargo:rustc-link-lib=static=zeknox");
